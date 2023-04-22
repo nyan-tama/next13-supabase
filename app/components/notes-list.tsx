@@ -14,6 +14,8 @@ async function fetchNotes() {
         headers: new Headers({
             apikey: process.env.apikey as string,
         }),
+        // ssg,ssrの設定 fetchファンクションの引数　オプション的な存在
+        cache: "no-store",
     })
     if (!res.ok) {
         throw new Error("Failed to fetch data in server")
