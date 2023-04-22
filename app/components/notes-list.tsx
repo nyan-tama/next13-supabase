@@ -7,15 +7,16 @@ type Note = Database["public"]["Tables"]["notes"]["Row"]
 // supabaseからデータを取得
 async function fetchNotes() {
     // 人工的に遅延を発生させる
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    // await new Promise((resolve) => setTimeout(resolve, 2000))
 
     // fetch の Promise が解決されるまで、関数の実行が一時停止されます。
     const res = await fetch(`${process.env.url}/rest/v1/notes?select=*`, {
         headers: new Headers({
             apikey: process.env.apikey as string,
         }),
-        // ssg,ssrの設定 fetchファンクションの引数　オプション的な存在
-        cache: "no-store",
+        // ssg,ssr,isrの設定 fetchファンクションの引数　オプション的な存在
+        // cache: "no-store",
+        next: {revalidate: 10},
     })
     if (!res.ok) {
         throw new Error("Failed to fetch data in server")
