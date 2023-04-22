@@ -1,3 +1,4 @@
+import { collectGenerateParams } from "next/dist/build/utils";
 import type { Database } from "../../database.types";
 import { format } from "date-fns"
 
@@ -18,6 +19,19 @@ async function fetchNotes() {
         throw new Error("Failed to fetch data in server")
     }
     const notes: Note[] = await res.json()
+    // notesの中身
+    // [
+    //     {
+    //       id: '254b30e3-3e61-45ee-a12a-bdcc35540f89',
+    //       created_at: '2023-04-20T07:48:44.246168+00:00',
+    //       title: 'Note1'
+    //     },
+    //     {
+    //       id: 'b1316d35-7a92-4ac1-8c80-6991512c8e69',
+    //       created_at: '2023-04-20T07:48:57.405476+00:00',
+    //       title: 'Note2'
+    //     }
+    //   ]
     return notes
 }
 
@@ -25,7 +39,7 @@ async function fetchNotes() {
 export default async function NotesList() {
     const notes = await fetchNotes()
     return(
-        <div>
+        <div className="text-center">
             <p className="my-4 pb-3 text-xl font-mesium underline underline-offset-4">
                 Notes
             </p>
