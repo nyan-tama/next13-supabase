@@ -9,14 +9,15 @@ export default function BlogLayout({
 }) {
     return (
         <section className="flex">
+            {/* 画面構成を２画面にする */}
             <aside className={`h-[calc(100vh-56px)] w-1/4 bg-gray-200 p-2 text-black`}>
                 {/* @ts-ignore */}
                 <BlogListStatic />
-                <div className="flex fustify-center">
+                <div className="flex justify-center">
                     <RefreshBtn />
                 </div>
             </aside>
-            <main className="flex flex-1 fustify-center">{children}</main>
+            <main className="flex flex-1 justify-center">{children}</main>
         </section>
     )
 }
