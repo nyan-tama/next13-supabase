@@ -4,6 +4,7 @@ import TimerCounter from "./components/timer-counter"
 // ストリーミングHtmlのために準備
 import { Suspense } from "react"
 import Spinner from "./components/spinner" //loadingのとはまた別
+import RefreshBtn from "./components/refresh-button"
 
 // appディレクトリの中はすべてサーバーコンポーネントとなる
 export default function Page() {
@@ -16,6 +17,7 @@ export default function Page() {
                 <NotesList />
             </Suspense>
             <TimerCounter />
+            <RefreshBtn />
         </main>
     )
 }
