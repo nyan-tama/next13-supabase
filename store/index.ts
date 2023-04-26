@@ -16,20 +16,23 @@ type State = {
     editedTask: EditedTask
     updateEditedTask: (payload: EditedTask) => void
     resetEdtedTask: () => void
+
     loginUser: LoginUser
     updateLoginUser: (payload: LoginUser) => void
     resetLoginUser: () => void
 }
 
+
 const useStore = create<State>((set) => ({
-    editedTask: {id: "", title: ""},
-    updateEditedTask: (payload) =>
-        set({editedTask: payload,}),
-    resetEdtedTask: () => set({editedTask: {id: "", title: ""}}),
-    loginUser: {id: "", email: ""},
-    updateLoginUser: (payload) =>
-        set({loginUser: payload,}),
-    resetLoginUser: () => set({loginUser: {id: "", email: ""}})
+    // キーバリュー構造
+    // プロパティ名:プロパティ値(メソッドも可)
+    editedTask: { id: "", title: "" },
+    updateEditedTask: (payload) => set({ editedTask: payload, }),
+    resetEdtedTask: () => set({ editedTask: { id: "", title: "" } }),
+
+    loginUser: { id: "", email: "" },
+    updateLoginUser: (payload) => set({ loginUser: payload, }),
+    resetLoginUser: () => set({ loginUser: { id: "", email: "" } })
 }))
 
 export default useStore

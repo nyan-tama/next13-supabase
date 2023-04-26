@@ -1,5 +1,5 @@
 import { headers, cookies } from 'next/headers'
-import SupabaseListener from '../components/supabase-listener'
+import SupabaseListener from '../components/supabase-listener'// cc
 import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import type { Database } from '../../database.types'
 
@@ -8,13 +8,23 @@ export default async function AuthLayout({
 }: {
     children: React.ReactNode
 }) {
-    //ブラウザで持っているcookieをサーバーに送る
+    //ブラウザで持っているアクセストークンヘッダー情報を含める
     const supabase = createServerComponentSupabaseClient<Database>({
         headers,
         cookies,
     })
-    //サーバーのセッションを取得
-    const {data:{session},} = await supabase.auth.getSession()
+
+    //sc側のセッションを取得
+    // const response = {
+    //     data: {
+    //       session: {
+    //         user: { ... },
+    //         access_token: "xyz",
+    //         // その他のプロパティ
+    //       }
+    //     }
+    //   }
+    const {data:{session}} = await supabase.auth.getSession()
 
     return (
         <>

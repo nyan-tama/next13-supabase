@@ -4,7 +4,9 @@
 // この型は、フォームの送信時にイベントオブジェクトを表します。
 import {useState, FormEvent}from "react"
 import {useRouter} from "next/navigation"
+
 import {ArrowRightOnRectangleIcon} from "@heroicons/react/24/solid"
+
 import supabase from "../../utils/supabase"
 import useStore from "@/store"
 
@@ -60,7 +62,7 @@ export default function Auth(){
                     <input
                         type="text"
                         required
-                        className="my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholeder-gray-500 focus:outline-none"
+                        className="text-gray-800 my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholeder-gray-500 focus:outline-none"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -70,7 +72,7 @@ export default function Auth(){
                     <input
                         type="password"
                         required
-                        className="my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholeder-gray-500 focus:outline-none"
+                        className="text-gray-800 my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholeder-gray-500 focus:outline-none"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}

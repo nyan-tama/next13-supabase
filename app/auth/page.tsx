@@ -1,4 +1,5 @@
-import Auth from "../components/auth"
+// 全体としてはsc
+import Auth from "../components/auth"// cc  
 
 export default function AuthPage() {
     return (
